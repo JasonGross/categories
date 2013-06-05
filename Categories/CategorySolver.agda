@@ -60,6 +60,12 @@ mutual
 pattern ∥F₁∥m D F s d F₀s F₀d m = ∥_₁∥₁ {F₀s} {F₀d} (∥_₁∥₀_ {D} F {s} {d} m)
 pattern ∥_₁∥_ F m = ∥ (∥ F ₁∥₀ m) ₁∥₁
 
+_⟰∘_ : ∀ {o ℓ e} {o′ ℓ′ e′} {C : Category o ℓ e} {s d d′ : Category.Obj C}
+         → (m2 : ReifiedMorphism {C = liftCategory {o′ = o′} {ℓ′} {e′} C} d d′)
+         → (m1 : ReifiedMorphism {C = liftCategory {o′ = o′} {ℓ′} {e′} C} s d)
+         → ReifiedMorphism {C = liftCategory {o′ = o′} {ℓ′} {e′} C} s d′
+_⟰∘_ {o′ = o′} {ℓ′} {e′} {C} {s} {d} {d′} m2 m1 = ?
+
 ⟱ : ∀ {o ℓ e} → {C : Category o ℓ e} → {s d : Category.Obj C} → ReifiedMorphism {C = C} s d → Category._⇒_ C s d
 ⟱ {C = C} (∥m₂∥ ∥∘∥ ∥m₁∥) = ⟱ ∥m₂∥ ∘ ⟱ ∥m₁∥
   where open Category C
